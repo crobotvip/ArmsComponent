@@ -22,12 +22,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.zxing.client.android.Intents;
+import com.google.zxing.integration.android.IntentResult;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.journeyapps.barcodescanner.CaptureActivity;
 
 import javax.inject.Inject;
 
@@ -56,6 +62,9 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
     @BindView(R2.id.recyclerView)
     RecyclerView mRecyclerView;
+
+    @BindView(R2.id.public_toolbar_scanner)
+    RelativeLayout public_toolbar_scanner;
     @BindView(R2.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @Inject
@@ -82,9 +91,24 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initRecyclerView();
+        public_toolbar_scanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(ZhihuHomeActivity.this,CaptureActivity.class),200);
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==200&&resultCode==Activity.RESULT_OK){
+
+
+            Toast.makeText(this,""+data.getStringExtra(Intents.Scan.RESULT),Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     public void onRefresh() {

@@ -1,1 +1,10 @@
-include ':app', ':CommonSDK', ':CommonService', ':CommonRes', ':module_zhihu', ':module_gank', 'module_gold'
+include ':app',
+        ':CommonSDK',
+        ':CommonService',
+        ':CommonRes',
+        ':module_zhihu',
+        ':module_demo',
+        ':module_gank',
+        ':demo',
+        'module_gold',
+        ':ThirdLibrarys:zxing-android-embedded'

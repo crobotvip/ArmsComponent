@@ -35,5 +35,21 @@
         android:textColor="@color/public_white"
         android:layout_gravity="center"
         tools:text="@string/public_app_name"/>
+    <RelativeLayout
+        android:id="@+id/public_toolbar_scanner"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/public_mar_left_10dp"
+            android:layout_marginRight="@dimen/public_mar_right_10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/public_loading"/>
+
+    </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>

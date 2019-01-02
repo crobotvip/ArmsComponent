@@ -31,8 +31,10 @@ import com.jess.arms.utils.ArmsUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.jessyan.armscomponent.app.R;
+import me.jessyan.armscomponent.commonres.utils.IconFont;
 import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 import me.jessyan.armscomponent.commonsdk.utils.Utils;
+import me.jessyan.armscomponent.commonservice.demo.service.DemoInfoService;
 import me.jessyan.armscomponent.commonservice.gank.service.GankInfoService;
 import me.jessyan.armscomponent.commonservice.gold.service.GoldInfoService;
 import me.jessyan.armscomponent.commonservice.zhihu.service.ZhihuInfoService;
@@ -51,6 +53,9 @@ import me.jessyan.armscomponent.commonservice.zhihu.service.ZhihuInfoService;
 public class MainActivity extends BaseActivity {
     @BindView(R.id.bt_zhihu)
     Button mZhihuButton;
+
+    @BindView(R.id.bt_demo)
+    Button mDemoButton;
     @BindView(R.id.bt_gank)
     Button mGankButton;
     @BindView(R.id.bt_gold)
@@ -62,6 +67,9 @@ public class MainActivity extends BaseActivity {
     GankInfoService mGankInfoService;
     @Autowired(name = RouterHub.GOLD_SERVICE_GOLDINFOSERVICE)
     GoldInfoService mGoldInfoService;
+
+    @Autowired(name = RouterHub.DEMO_SERVICE_ZHIHUINFOSERVICE)
+    DemoInfoService demoInfoService;
 
     private long mPressedTime;
 
@@ -82,6 +90,7 @@ public class MainActivity extends BaseActivity {
         loadZhihuInfo();
         loadGankInfo();
         loadGoldInfo();
+        loadDemoInfo();
     }
 
     private void loadZhihuInfo() {
@@ -91,6 +100,15 @@ public class MainActivity extends BaseActivity {
             return;
         }
         mZhihuButton.setText(mZhihuInfoService.getInfo().getName());
+    }
+    private void loadDemoInfo() {
+        //当非集成调试阶段, 宿主 App 由于没有依赖其他组件, 所以使用不了对应组件提供的服务
+        if (demoInfoService == null) {
+            mDemoButton.setEnabled(false);
+            return;
+        }
+        mDemoButton.setText(demoInfoService.getInfo().getName());
+        IconFont.setIconFont(mDemoButton,R.string.public_icon_font_back);
     }
 
     private void loadGankInfo() {
@@ -142,7 +160,7 @@ public class MainActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.bt_zhihu, R.id.bt_gank, R.id.bt_gold})
+    @OnClick({R.id.bt_zhihu, R.id.bt_gank, R.id.bt_gold,R.id.bt_demo})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_zhihu:
@@ -153,6 +171,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.bt_gold:
                 Utils.navigation(MainActivity.this, RouterHub.GOLD_HOMEACTIVITY);
+                break;
+            case R.id.bt_demo:
+                Utils.navigation(MainActivity.this, RouterHub.DEMO_HOMEACTIVITY);
                 break;
         }
     }
