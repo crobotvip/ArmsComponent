@@ -64,10 +64,13 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
     @BindView(R2.id.public_toolbar_scanner)
     RelativeLayout public_toolbar_scanner;
+
     @BindView(R2.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+
     @Inject
     RecyclerView.LayoutManager mLayoutManager;
+
     @Inject
     RecyclerView.Adapter mAdapter;
 

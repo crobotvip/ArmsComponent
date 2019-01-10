@@ -9,7 +9,20 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-
+    signingConfigs {
+        release {
+            keyAlias 'windfindtech'
+            keyPassword '1234-QWer'
+            storeFile file('../windfindtech.jks')
+            storePassword '1234-QWer'
+        }
+        debug {
+            keyAlias 'windfindtech'
+            keyPassword '1234-QWer'
+            storeFile file('../windfindtech.jks')
+            storePassword '1234-QWer'
+        }
+    }
     defaultConfig {
         applicationId "me.jessyan.armscomponent.app"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
@@ -17,6 +30,7 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+        multiDexEnabled true
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -29,6 +43,7 @@ android {
             buildConfigField "boolean", "USE_CANARY", "true"
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
             minifyEnabled false
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
@@ -36,9 +51,10 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             zipAlignEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -46,7 +62,7 @@ android {
     lintOptions {
         disable 'InvalidPackage'
         disable "ResourceType"
-        abortOnError false
+//        abortOnError false
     }
 }
 

@@ -43,20 +43,20 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
-            minifyEnabled true
+            minifyEnabled false
             if (isBuildModule.toBoolean()) {
-                shrinkResources true
+                shrinkResources false
             }
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
-        disable "ResourceType"
-        abortOnError false
-    }
+//    lintOptions {
+//        disable 'InvalidPackage'
+//        disable "ResourceType"
+//        abortOnError false
+//    }
 
     sourceSets {
         main {
@@ -89,5 +89,12 @@ dependencies {
         compileOnly rootProject.ext.dependencies["arouter-compiler"]
         compileOnly rootProject.ext.dependencies["canary-debug"]
         compileOnly rootProject.ext.dependencies["canary-release"]
+    }
+}
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
     }
 }

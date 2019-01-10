@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.jessyan.armscomponent.commonsdk.core;
+package me.jessyan.armscomponent.app.app;
 
 import android.app.Activity;
 import android.app.Application;
@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import com.jess.arms.utils.ArmsUtils;
 
+import me.jessyan.armscomponent.commonres.utils.IconFont;
 import timber.log.Timber;
 
 /**
@@ -42,18 +43,16 @@ import timber.log.Timber;
  * ================================================
  */
 public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifecycleCallbacks {
-
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
         Timber.i(activity + " - onActivityCreated");
+
 
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
         Timber.i(activity + " - onActivityStarted");
-
-
 
 
         if (!activity.getIntent().getBooleanExtra("isInitToolbar", false)) {

@@ -24,4 +24,10 @@ public abstract class IconFont {
         textView.setTextColor(Color.GREEN);
         textView.setTypeface(iconfont);
     }
+
+    public static void setIconFont(TextView textView){
+        Typeface iconfont = Typeface.createFromAsset(textView.getContext().getAssets(), "iconfont/iconfont.ttf");
+        textView.setTextColor(Color.GREEN);
+        textView.setTypeface(iconfont);
+    }
 }

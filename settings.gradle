@@ -6,5 +6,5 @@ include ':app',
         ':module_demo',
         ':module_gank',
         ':demo',
-        'module_gold',
+        ':module_gold',
         ':ThirdLibrarys:zxing-android-embedded'

@@ -15,11 +15,19 @@
  */
 package me.jessyan.armscomponent.app.mvp.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.LayoutInflaterCompat;
+import android.support.v4.view.LayoutInflaterFactory;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -31,6 +39,7 @@ import com.jess.arms.utils.ArmsUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.jessyan.armscomponent.app.R;
+import me.jessyan.armscomponent.commonres.base.EasyActivity;
 import me.jessyan.armscomponent.commonres.utils.IconFont;
 import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 import me.jessyan.armscomponent.commonsdk.utils.Utils;
@@ -50,7 +59,7 @@ import me.jessyan.armscomponent.commonservice.zhihu.service.ZhihuInfoService;
  * ================================================
  */
 @Route(path = RouterHub.APP_MAINACTIVITY)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends EasyActivity {
     @BindView(R.id.bt_zhihu)
     Button mZhihuButton;
 
@@ -85,6 +94,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+
         ARouter.getInstance().inject(this);
         //这里想展示组件向外提供服务的功能, 模拟下组件向宿主提供一些必要的信息, 这里为了简单就直接返回本地数据不请求网络了
         loadZhihuInfo();
