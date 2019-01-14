@@ -47,6 +47,7 @@ public interface RouterHub {
     String GANK = "/gank";//干货集中营组件
     String GOLD = "/gold";//稀土掘金组件
     String DEMO = "/demo";//DEMO组件
+    String TEST = "/test";//DEMO组件
 
     /**
      * 服务组件, 用于给每个组件暴露特有的服务
@@ -59,6 +60,7 @@ public interface RouterHub {
      */
     String APP_SPLASHACTIVITY = APP + "/SplashActivity";
     String APP_MAINACTIVITY = APP + "/MainActivity";
+    String TEST_MAINACTIVITY  = TEST + "/MainActivity";
 
 
     /**
@@ -77,6 +79,7 @@ public interface RouterHub {
 
     String DEMO_HOMEACTIVITY = DEMO + "/HomeActivity";
     String DEMO_DETAILACTIVITY = DEMO + "/DetailActivity";
+    String TEST_CHANGESKINACTIVITY = TEST + "/ChangeSkinActivity";
 
     /**
      * 干货集中营分组

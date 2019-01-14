@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/btn_green">
+
+        <TextView
+            android:id="@+id/tv_back"
+            style="@style/btn_back" />
+
+        <TextView
+            style="@style/tv_title"
+            android:text="订单支付" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/text_layout"
+                android:layout_margin="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/text_hint"
+                    android:text="商品名:" />
+
+                <EditText
+                    android:id="@+id/et_product_name"
+                    style="@style/text_input" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_layout"
+                android:layout_margin="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/text_hint"
+                    android:text="订单号:" />
+
+                <EditText
+                    android:id="@+id/et_order_id"
+                    style="@style/text_input" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_layout"
+                android:layout_margin="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/text_hint"
+                    android:text="随机数:" />
+
+                <EditText
+                    android:id="@+id/et_random_number"
+                    style="@style/text_input" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_layout"
+                android:layout_margin="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/text_hint"
+                    android:text="总金额:" />
+
+                <EditText
+                    android:id="@+id/et_order_total"
+                    style="@style/text_input"
+                    android:hint="默认金额为100"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/text_layout"
+                android:layout_margin="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/text_hint"
+                    android:text="SPU:" />
+
+                <EditText
+                    android:id="@+id/et_spu"
+                    style="@style/text_input" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/text_layout"
+                android:layout_margin="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/text_hint"
+                    android:text="SKU:" />
+
+                <EditText
+                    android:id="@+id/et_sku"
+                    style="@style/text_input" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_pay"
+                style="@style/show_info_btn"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_background"
+                android:text="支付" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center"
+                android:text="@string/hint_words"
+                android:textSize="@dimen/sp_20" />
+
+            <EditText
+                android:id="@+id/et_show_msg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_400"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:background="@drawable/et_bg"
+                android:gravity="left|top"
+                android:padding="@dimen/dp_10"
+                android:textSize="@dimen/sp_20" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

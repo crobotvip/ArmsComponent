@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/btn_green">
+
+        <TextView
+            android:id="@+id/tv_back"
+            style="@style/btn_back" />
+
+        <TextView
+            style="@style/tv_title"
+            android:text="功能列表" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_function"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@null" />
+</LinearLayout>

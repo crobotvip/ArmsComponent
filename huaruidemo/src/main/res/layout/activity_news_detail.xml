@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/btn_green">
+
+        <TextView
+            android:id="@+id/tv_back"
+            style="@style/btn_back" />
+
+        <TextView
+            style="@style/tv_title"
+            android:text="新闻详情" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_get_detail"
+        style="@style/show_info_btn"
+        android:layout_margin="17dp"
+        android:background="@drawable/btn_background"
+        android:text="获取详情" />
+
+    <EditText
+        android:id="@+id/et_show_msg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_400"
+        android:layout_marginBottom="@dimen/dp_30"
+        android:background="@drawable/et_bg"
+        android:gravity="left|top"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/sp_20" />
+</LinearLayout>

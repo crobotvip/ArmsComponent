@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">华瑞开放平台Demo</string>
+    <string name="init_sdk">初始化SDK</string>
+    <string name="validation_developer">验证开发者</string>
+    <string name="load_save">读取上一次</string>
+    <string name="demo_in">进入测试</string>
+    <string name="get_http_sign">模拟http获取加签</string>
+    <string name="authorize_login">授权登陆</string>
+    <string name="hint_words">显示返回的数据信息</string>
+    <string name="userToken_input_hint">请输入userToken:</string>
+    <string name="show_success_page">是否显示成功页面:</string>
+    <string name="appId_input_hint">请输入appId:</string>
+    <string name="loginSign_input_hint">请输入loginSign:</string>
+    <string name="secureKey_input_hint">请输入secureKey:</string>
+    <string name="hr_user">用户</string>
+    <string name="hr_pay">支付</string>
+    <string name="hr_product">产品</string>
+    <string name="hr_finance">极度贷</string>
+    <string name="hr_back">返回</string>
+    <string name="body_input_hint">请输入商品名:</string>
+    <string name="body_input_init">Love my love</string>
+    <string name="mchid_input_hint">请输入商户号：</string>
+    <string name="mchid_input_init">SYT004</string>
+    <string name="outTradeNo_input_hint">请输入订单号：</string>
+    <string name="random_input_hint">请输入随机数：</string>
+    <string name="outTradeNo_input_init">5342432424</string>
+    <string name="totalFee_input_hint">请输入总金额：</string>
+    <string name="totalFee_input_init">1</string>
+    <string name="paySign_input_hint">请输入secureKey：</string>
+    <string name="paySign_input_init">0b55f281-2486-449c-8570-5ce1b2a7d529</string>
+</resources>

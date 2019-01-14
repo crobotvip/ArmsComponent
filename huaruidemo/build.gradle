@@ -1,3 +1,45 @@
+//apply plugin: 'com.android.application'
+//
+//android {
+//    compileSdkVersion 25
+//    buildToolsVersion "25.0.2"
+//    defaultConfig {
+//        applicationId "com.shrb.demo"
+//        minSdkVersion 19
+//        targetSdkVersion 25
+//        versionCode 1
+//        versionName "1.0"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+////        ndk {
+////            abiFilters 'armeabi', 'x86'
+////        }
+//    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//    repositories {
+//        flatDir {
+//            dirs 'src/main/jniLibs','libs'
+//        }
+//    }
+//}
+//
+//dependencies {
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+//    compile 'com.android.support:appcompat-v7:25.1.0'
+//    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+//    compile 'com.github.bumptech.glide:glide:3.7.0'
+//    compile 'com.alibaba:fastjson:1.2.14'
+//    compile(name:'lib-release', ext:'aar')
+//    testCompile 'junit:junit:4.12'
+//}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -9,9 +51,22 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('demo.jks')
+            storePassword '123456'
+        }
+        debug {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('demo.jks')
+            storePassword '123456'
+        }
+    }
     defaultConfig {
-        applicationId "com.example.demo"
+        applicationId "com.shrb.demo"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
@@ -28,6 +83,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "true"
             buildConfigField "boolean", "USE_CANARY", "true"
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
+            signingConfig signingConfigs.debug
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -36,6 +92,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
             buildConfigField "boolean", "IS_BUILD_MODULE", "${isBuildModule}"
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
@@ -58,10 +115,9 @@ dependencies {
         runtimeOnly project(":module_demo")
         runtimeOnly project(":module_gold")
     }
-    implementation project(":CommonRes")
-//因为 CommonRes 依赖了 CommonSDK, 所以如果业务模块需要公共 UI 组件就依赖 CommonRes, 如果不需要就只依赖 CommonSDK
-    implementation project(":CommonService")
-
+    implementation project(':CommonRes')
+    //因为 CommonRes 依赖了 CommonSDK, 所以如果业务模块需要公共 UI 组件就依赖 CommonRes, 如果不需要就只依赖 CommonSDK
+    implementation project(':CommonService')
     //tools
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
@@ -75,4 +131,6 @@ dependencies {
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
     testImplementation rootProject.ext.dependencies["canary-release"]
+    implementation project(':lib-release')
 }
+
