@@ -1,11 +1,19 @@
-include ':app',
-        ':huaruidemo',
-        ':CommonSDK',
+include ':app',//宿主APP
+        ':huaruidemo',//华瑞使用DEMO
+        ':demo',
+
+
+        ':CommonSDK',//基础SDK
         ':CommonService',
         ':CommonRes',
-        ':module_zhihu',
+
+
+        ':module_zhihu',//业务组件
         ':module_demo',
         ':module_gank',
-        ':demo',
         ':module_gold',
-        ':ThirdLibrarys:zxing-android-embedded', ':lib-release'
+
+
+        ':ThirdLibrarys:zxing-android-embedded', //三方库
+        ':ThirdLibrarys:lib_release',
+        ':ThirdLibrarys:cockroach'

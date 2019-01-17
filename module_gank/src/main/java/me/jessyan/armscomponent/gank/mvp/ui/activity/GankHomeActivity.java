@@ -86,6 +86,8 @@ public class GankHomeActivity extends BaseActivity<GankHomePresenter> implements
         initRecyclerView();
         mRecyclerView.setAdapter(mAdapter);
         initPaginate();
+        throw new NullPointerException();
+
     }
 
 

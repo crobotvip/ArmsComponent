@@ -17,14 +17,24 @@ package me.jessyan.armscomponent.app.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.utils.ArmsUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.wanjian.cockroach.Cockroach;
+import com.wanjian.cockroach.ExceptionHandler;
 
 import me.jessyan.armscomponent.app.BuildConfig;
+import me.jessyan.armscomponent.commonres.crash.CrashLog;
+import me.jessyan.armscomponent.commonres.crash.DebugSafeModeTipActivity;
+import me.jessyan.armscomponent.commonres.crash.DebugSafeModeUI;
 
 /**
  * ================================================
@@ -49,12 +59,62 @@ public class AppLifecyclesImpl implements AppLifecycles {
             // You should not init your app in this process.
             return;
         }
+        install(application);
         //leakCanary内存泄露检查
         ArmsUtils.obtainAppComponentFromContext(application).extras().put(RefWatcher.class.getName(), BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
     }
 
     @Override
     public void onTerminate(@NonNull Application application) {
+
+    }
+    private void install(Application application) {
+        final Thread.UncaughtExceptionHandler sysExcepHandler = Thread.getDefaultUncaughtExceptionHandler();
+        final Toast toast = Toast.makeText(application, "", Toast.LENGTH_SHORT);
+        DebugSafeModeUI.init(application);
+        Cockroach.install(application, new ExceptionHandler() {
+            @Override
+            protected void onUncaughtExceptionHappened(Thread thread, Throwable throwable) {
+                Log.e("AndroidRuntime", "--->onUncaughtExceptionHappened:" + thread + "<---", throwable);
+                CrashLog.saveCrashLog(application, throwable);
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.setText("xxx");
+                        toast.show();
+                    }
+                });
+            }
+
+            @Override
+            protected void onBandageExceptionHappened(Throwable throwable) {
+                throwable.printStackTrace();//打印警告级别log，该throwable可能是最开始的bug导致的，无需关心
+                toast.setText("Cockroach Worked");
+                toast.show();
+            }
+
+            @Override
+            protected void onEnterSafeMode() {
+                String tips = "xxx";
+                Toast.makeText(application, tips, Toast.LENGTH_LONG).show();
+                DebugSafeModeUI.showSafeModeUI();
+
+                if (BuildConfig.DEBUG) {
+                    Intent intent = new Intent(application, DebugSafeModeTipActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    application.startActivity(intent);
+                }
+            }
+
+            @Override
+            protected void onMayBeBlackScreen(Throwable e) {
+                Thread thread = Looper.getMainLooper().getThread();
+                Log.e("AndroidRuntime", "--->onUncaughtExceptionHappened:" + thread + "<---", e);
+                //黑屏时建议直接杀死app
+                sysExcepHandler.uncaughtException(thread, new RuntimeException("black screen"));
+            }
+
+        });
 
     }
 }

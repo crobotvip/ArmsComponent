@@ -137,7 +137,8 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements Det
     @Override
     public void shonContent(ZhihuDetailBean bean) {
         String htmlData = HtmlUtil.createHtmlData(bean.getBody(), bean.getCss(), bean.getJs());
-        mWebView.loadData(htmlData, HtmlUtil.MIME_TYPE, ZhihuConstants.ENCODING);
+//        mWebView.loadData(htmlData, HtmlUtil.MIME_TYPE, ZhihuConstants.ENCODING);
+        mWebView.loadUrl("http://timesheet.juneyaokc.com/auth/login");
     }
 
     @Override
