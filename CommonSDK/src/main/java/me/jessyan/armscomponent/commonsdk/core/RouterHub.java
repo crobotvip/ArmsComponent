@@ -43,8 +43,10 @@ public interface RouterHub {
      * 组名
      */
     String APP = "/app";//宿主 App 组件
+
     String ZHIHU = "/zhihu";//知乎组件
     String GANK = "/gank";//干货集中营组件
+
     String GOLD = "/gold";//稀土掘金组件
     String DEMO = "/demo";//DEMO组件
     String TEST = "/test";//DEMO组件

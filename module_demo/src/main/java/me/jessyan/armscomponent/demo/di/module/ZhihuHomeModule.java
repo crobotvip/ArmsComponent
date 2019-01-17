@@ -30,6 +30,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import me.jessyan.armscomponent.commonsdk.core.RouterHub;
+import me.jessyan.armscomponent.commonsdk.utils.Utils;
 import me.jessyan.armscomponent.demo.app.ZhihuConstants;
 import me.jessyan.armscomponent.demo.mvp.contract.ZhihuHomeContract;
 import me.jessyan.armscomponent.demo.mvp.model.ZhihuModel;
@@ -70,11 +71,12 @@ public abstract class ZhihuHomeModule {
         adapter.setOnItemClickListener(new DefaultAdapter.OnRecyclerViewItemClickListener<DailyListBean.StoriesBean>() {
             @Override
             public void onItemClick(View view, int viewType, DailyListBean.StoriesBean data, int position) {
-                ARouter.getInstance()
-                        .build(RouterHub.ZHIHU_DETAILACTIVITY)
-                        .withInt(ZhihuConstants.DETAIL_ID, data.getId())
-                        .withString(ZhihuConstants.DETAIL_TITLE, data.getTitle())
-                        .navigation(zhihuHomeView.getActivity());
+                ARouter.getInstance().build(RouterHub.GANK_HOMEACTIVITY);
+//                ARouter.getInstance()
+//                        .build(RouterHub.ZHIHU_DETAILACTIVITY)
+//                        .withInt(ZhihuConstants.DETAIL_ID, data.getId())
+//                        .withString(ZhihuConstants.DETAIL_TITLE, data.getTitle())
+//                        .navigation(zhihuHomeView.getActivity());
             }
         });
         return adapter;
