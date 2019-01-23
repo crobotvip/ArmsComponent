@@ -1,4 +1,4 @@
-include ':app',//宿主APP
+include ':app', ':module_user',//宿主APP
         ':huaruidemo',//华瑞使用DEMO
         ':demo',
 

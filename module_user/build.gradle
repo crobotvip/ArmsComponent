@@ -1,0 +1,36 @@
+apply from: "../common_component_build.gradle"
+apply plugin: 'maven'
+
+android {
+//    resourcePrefix "ModuleName_" //给 Module 内的资源名增加前缀, 避免资源名冲突, 建议使用 Module 名作为前缀
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //因为 CommonRes 依赖了 CommonSDK, 所以如果业务模块需要公共 UI 组件就依赖 CommonRes, 如果不需要就只依赖 CommonSDK
+    api project(":CommonRes")
+    api project(":CommonService")
+
+}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+            repository(url: "http://localhost:8081/repository/module_user/") {
+                authentication(userName: "admin", password: "admin123")
+            }
+            pom.project {
+                //引用时使用如下格式： implementation 'groupId:artifactId:version'
+                // 版本号，有更新时修改版本号，在上传
+                version "1.0.2"
+                //模块名字（每个模块不一样）
+                artifactId "user"
+                //一般使用的是公司的网址
+                groupId "www.junyaokc.com"
+                //默认配置不用修改
+                packaging "aar"
+                description "dependences lib"
+            }
+        }
+    }
+}

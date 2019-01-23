@@ -27,6 +27,7 @@ import org.json.JSONException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import io.reactivex.exceptions.CompositeException;
 import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener;
 import retrofit2.HttpException;
 import timber.log.Timber;
@@ -57,6 +58,31 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
             msg = convertStatusCode(httpException);
         } else if (t instanceof JsonParseException || t instanceof ParseException || t instanceof JSONException || t instanceof JsonIOException) {
             msg = "数据解析错误";
+        }else if(t instanceof CompositeException){
+            msg="组合异常";
+        }else if(t instanceof NetError){
+            msg= t.getMessage();
+
+//            public static final int ParseError = 0;   //数据解析异常
+//            public static final int NoConnectError = 1;   //无连接异常
+//            public static final int AuthError = 2;   //用户验证异常
+//            public static final int NoDataError = 3;   //无数据返回异常
+//            public static final int BusinessError = 4;   //业务异常
+//            public static final int OtherError = 5;   //其他异常
+            switch (((NetError) t).getType()){
+                case NetError.AuthError:
+                    break;
+                case NetError.NoConnectError:
+                    break;
+                case NetError.NoDataError:
+                    break;
+                case NetError.BusinessError:
+                    break;
+                case NetError.OtherError:
+                    break;
+            }
+
+
         }
         ArmsUtils.snackbarText(msg);
     }

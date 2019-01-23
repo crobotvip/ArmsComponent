@@ -50,6 +50,7 @@ public interface RouterHub {
     String GOLD = "/gold";//稀土掘金组件
     String DEMO = "/demo";//DEMO组件
     String TEST = "/test";//DEMO组件
+    String USER = "/user";//DEMO组件
 
     /**
      * 服务组件, 用于给每个组件暴露特有的服务
@@ -62,6 +63,11 @@ public interface RouterHub {
      */
     String APP_SPLASHACTIVITY = APP + "/SplashActivity";
     String APP_MAINACTIVITY = APP + "/MainActivity";
+    String APP_GUIDEACTIVITY = APP + "/GuideActivity";
+    String APP_HOMEACTIVITY = APP + "/HomeActivity";
+
+
+
     String TEST_MAINACTIVITY  = TEST + "/MainActivity";
 
 
@@ -81,6 +87,7 @@ public interface RouterHub {
 
     String DEMO_HOMEACTIVITY = DEMO + "/HomeActivity";
     String DEMO_DETAILACTIVITY = DEMO + "/DetailActivity";
+    String DEMO_DEMOACTIVITY = DEMO + "/DemoActivity";
     String TEST_CHANGESKINACTIVITY = TEST + "/ChangeSkinActivity";
 
     /**
@@ -97,4 +104,14 @@ public interface RouterHub {
 
     String GOLD_HOMEACTIVITY = GOLD + "/HomeActivity";
     String GOLD_DETAILACTIVITY = GOLD + "/DetailActivity";
+
+
+    /**
+     * 用戶
+     */
+    String USER_SERVICE_GOLDINFOSERVICE = USER + SERVICE + "/GoldInfoService";
+
+    String USER_HOMEACTIVITY = USER + "/MainActivity";
+    String USER_LOGINACTIVITY = USER + "/LoginActivity";
+
 }

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="public_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="public_AppTheme" parent="QMUI.Compat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/public_colorPrimary</item>
         <item name="colorPrimaryDark">@color/public_colorPrimaryDark</item>
@@ -9,12 +9,49 @@
         <item name="android:windowAnimationStyle">@style/public_Activity_Animation</item>
     </style>
 
+    <style name="public_fullScreen_AppTheme" parent="QMUI.Compat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/public_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/public_colorPrimaryDark</item>
+        <item name="colorAccent">@color/public_colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/public_Activity_Animation</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="public_login_AppTheme" parent="QMUI.Compat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/public_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/public_colorPrimaryDark</item>
+        <item name="colorAccent">@color/public_colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/public_Login_Activity_Animation</item>
+        <item name="android:windowBackground">@mipmap/flower</item>
+    </style>
+
     <style name="public_Activity_Animation">
         <item name="android:activityOpenEnterAnimation">@anim/public_translate_right_to_center</item>
         <item name="android:activityOpenExitAnimation">@anim/public_translate_center_to_left</item>
+
         <item name="android:activityCloseEnterAnimation">@anim/public_translate_left_to_center</item>
         <item name="android:activityCloseExitAnimation">@anim/public_translate_center_to_right</item>
     </style>
+
+    <!--android:activityOpenEnterAnimation 一个activity创建进入的效果。
+
+    android:activityOpenExitAnimation    一个activity还没有finish()下退出效果, 比如有俩个activity A与B 首先启动A 然后再启动B 那么A还没有finish()  这时A的退出效果。
+
+    android:activityCloseEnterAnimation 表示上一个activity返回进入效果 比如有俩个activity A与B  B在最上面，B退出(finish)后 A重新进入的效果。
+
+    android:activityCloseExitAnimation    表示的是activity finish()之后的效果 比如有俩个activity A与B B退出后会被finish() 那么B的退出效果在这定义。-->
+
+    <style name="public_Login_Activity_Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/public_slide_in_from_bottom</item>
+        <item name="android:activityOpenExitAnimation">@anim/public_hold</item>
+
+        <item name="android:activityCloseEnterAnimation">@anim/public_hold</item>
+        <item name="android:activityCloseExitAnimation">@anim/public_slide_out_to_bottom</item>
+    </style>
+
+
 
     <style name="public_dialog_inout_anim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/public_dialog_enter</item>

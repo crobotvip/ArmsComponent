@@ -70,6 +70,9 @@ public class MainActivity extends EasyActivity {
     @BindView(R.id.bt_gold)
     Button mGoldButton;
 
+    @BindView(R.id.bt_login)
+    Button bt_login;
+
     @Autowired(name = RouterHub.ZHIHU_SERVICE_ZHIHUINFOSERVICE)
     ZhihuInfoService mZhihuInfoService;
     @Autowired(name = RouterHub.GANK_SERVICE_GANKINFOSERVICE)
@@ -170,7 +173,7 @@ public class MainActivity extends EasyActivity {
      *
      * @param view
      */
-    @OnClick({R.id.bt_zhihu, R.id.bt_gank, R.id.bt_gold,R.id.bt_demo})
+    @OnClick({R.id.bt_zhihu, R.id.bt_gank, R.id.bt_gold,R.id.bt_demo,R.id.bt_login})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_zhihu:
@@ -183,7 +186,11 @@ public class MainActivity extends EasyActivity {
                 Utils.navigation(MainActivity.this, RouterHub.GOLD_HOMEACTIVITY);
                 break;
             case R.id.bt_demo:
-                Utils.navigation(MainActivity.this, RouterHub.DEMO_HOMEACTIVITY);
+                Utils.navigation(MainActivity.this, RouterHub.APP_GUIDEACTIVITY);
+                break;
+
+            case R.id.bt_login:
+                Utils.navigation(MainActivity.this, RouterHub.APP_HOMEACTIVITY);
                 break;
         }
     }

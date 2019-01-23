@@ -46,6 +46,8 @@ dependencies {
         exclude module: 'support-annotations'
     }
     api rootProject.ext.dependencies["retrofit-url-manager"]
+    api rootProject.ext.dependencies["lifecyclemodel"]
+
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.alibaba:fastjson:1.2.54'
     api project(':ThirdLibrarys:cockroach')

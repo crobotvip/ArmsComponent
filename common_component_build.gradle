@@ -1,5 +1,4 @@
 //def componentName = project.getName().startsWith("module_") ? project.getName().substring(0, "module_".length()) :
-
 if (isBuildModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
@@ -98,3 +97,4 @@ allprojects {
         }
     }
 }
+

@@ -64,4 +64,31 @@
     //marginBottom
     <dimen name="public_mar_bottom_4dp">4dp</dimen>
     <dimen name="public_mar_bottom_5dp">5dp</dimen>
+
+
+    <dimen name="public_home_tab_height">49dp</dimen>
+    <dimen name="public_common_content_spacing">@dimen/qmui_content_spacing_horizontal</dimen>
+
+    <!-- ListView -->
+    <dimen name="public_list_divider_height">1px</dimen>
+    <dimen name="public_list_divider_height_negative">-1px</dimen>
+    <!-- Helper 系列界面 -->
+
+    <!-- ColorHelper 颜色工具 -->
+    <dimen name="public_colorHelper_square_length">46dp</dimen>
+    <dimen name="public_colorHelper_square_margin">23dp</dimen>
+    <dimen name="public_colorHelper_square_desc_marginTop">10dp</dimen>
+    <dimen name="public_colorHelper_column_marginBottom">35dp</dimen>
+
+    <!-- DeviceHelper 设备检测工具 -->
+    <dimen name="public_deviceHelper_column_marginBottom">30dp</dimen>
+
+    <!-- DrawableHelper Drawable 工具 -->
+    <dimen name="public_drawableHelper_column_marginBottom">35dp</dimen>
+    <dimen name="public_drawableHelper_item_marginHorizontal">20dp</dimen>
+    <dimen name="public_drawableHelper_common_shape_size">50dp</dimen>
+
+    <!-- Span Utils 各种 Span 工具 -->
+    <dimen name="public_spanUtils_column_marginBottom">35dp</dimen>
+    <dimen name="public_spanUtils_common_textSize">16sp</dimen>
 </resources>
